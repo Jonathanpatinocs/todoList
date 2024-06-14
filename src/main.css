@@ -1,3 +1,69 @@
-div {
-    background-color: aliceblue;
+body {
+    padding:3%;
+    margin:0;
+    min-height: 100vh;
+}
+* {
+    border: 1px solid red;
+}
+#grid {
+    border-radius: 15px;
+    min-width: 700px;
+    min-height: 100vh;
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(4, 5fr);
+}
+/* Header */
+#header {
+    font-size: 2rem;
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+#header button {
+    align-self: flex-end;
+    margin: 3%;
+    background-color: red;
+    width: 60px;
+    height: 60px;
+    border-radius: 35px;
+    
+    
+}
+/* Projects */
+#projects-container {
+    grid-area: 1 / 1 / -1 / 2;
+}
+
+#projects-header {
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+#projects-header div{
+margin-left: auto;
+}
+#newProjectButton {
+    margin-left: auto;
+    font-size: 30px;
+    color: gray;
+    background-color: white;
+}
+#projects-list {
+
+}
+.project {
+    height: 30px;
+}
+/* To do's */
+#todo-container {
+    grid-row: 2 / -1;
+    grid-column: 2 / 3;
 }
