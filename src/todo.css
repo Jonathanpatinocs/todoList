@@ -1,0 +1,46 @@
+/* To do's */
+#todo-container {
+    grid-row: 2 / -1;
+    grid-column: 2 / 3;
+}
+.todoHead {
+    display: flex;
+    height: 20px;
+}
+.todoBody {
+    
+    height: 100px;
+    display: flex;
+}
+.todoBody-hidden {
+    height: 0px;
+}
+.todoDesc {
+    margin-left: 4px;
+}
+.todoDueDate {
+    align-self: end;
+    margin-left: auto;
+}
+.todoPriority {
+    border-radius: 15px;
+    margin-left: auto;
+    height: 15px;
+    width: 15px;
+}
+.todoHead-right
+{
+    align-items: center;
+    display: flex;
+    gap: 3px;
+    margin-left:auto;
+}
+.priority-1 {
+    background-color: #2b8a51;
+}
+.priority-2 {
+    background-color: #FFDB5C;
+}
+.priority-3 {
+    background-color: #C73659;
+}

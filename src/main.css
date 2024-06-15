@@ -62,37 +62,3 @@ margin-left: auto;
 .project {
     height: 30px;
 }
-/* To do's */
-#todo-container {
-    grid-row: 2 / -1;
-    grid-column: 2 / 3;
-}
-.todoHead {
-    display: flex;
-    height: 20px;
-}
-.todoBody {
-    height: 100px;
-    display: flex;
-}
-.todoDesc {
-    margin-left: 4px;
-}
-.todoDueDate {
-    align-self: end;
-    margin-left: auto;
-}
-.todoPriority {
-    background-color: green;
-    border-radius: 15px;
-    margin-left: auto;
-    height: 15px;
-    width: 15px;
-}
-.todoHead-right
-{
-    align-items: center;
-    display: flex;
-    gap: 3px;
-    margin-left:auto;
-}

@@ -2,6 +2,7 @@ class Project {
     list = [];
     constructor(title) {
         this.title = title;
+        this.selected = false;
     }
     addTodo(item) {
         this.list.push(item);
