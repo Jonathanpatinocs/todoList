@@ -2,8 +2,9 @@ import { divide } from "lodash";
 import { Project, TodoItem } from "./todo";
 
 
+const projects = [];
 
-function createTodoCard(todoItem) {
+function createTodoCard(todoItem, project) {
     const todoContainer = document.getElementById('todo-container');
     const todo = document.createElement('div');
     todo.classList.add('todo');
@@ -18,6 +19,17 @@ function createTodoCard(todoItem) {
     todoTitle.textContent = todoItem.title;
     const todoHeadRight = document.createElement('div');
     todoHeadRight.classList.add('todoHead-right');
+    const todoDeleteButton = document.createElement('button');
+    todoDeleteButton.classList.add('deleteTodo');
+    todoDeleteButton.textContent = 'x';
+    todoDeleteButton.addEventListener('click', ()=> {
+        console.log(project);
+        let index = project.indexOf(todoItem);
+        project.splice(index, 1);
+        clearAll(todoContainer);
+        showAllTodos(checkProjectSelected(), projects);
+        console.log(project);
+    })
     const todoPriority = document.createElement('div');
     todoPriority.classList.add('todoPriority');
     switch(todoItem.priority) {
@@ -77,12 +89,13 @@ function createTodoCard(todoItem) {
 
 
 
-    todoHeadRight.append(todoPriority, dropdown);
+    todoHeadRight.append(todoPriority, todoDeleteButton, dropdown);
     todoHead.append(checkbox, todoTitle, todoHeadRight);
     todo.append(todoHead);
     todoContainer.append(todo);
 
 }
+
 
 function createProjectCard(project, list) {
     const projectsList = document.getElementById('projects-list');
@@ -99,6 +112,23 @@ function createProjectCard(project, list) {
     });
     projectsList.append(div);
 }
-
-
-export {createTodoCard, createProjectCard};
+function checkProjectSelected() {
+    let selected;
+    for (let i = 0; i < projects.length; i++) {
+        if (projects[i].selected === true) {
+            selected = projects[i];
+        }
+    }
+    return selected;
+}
+function clearAll(project) {
+    while(project.firstChild) {
+        project.removeChild(project.lastChild);
+    }
+}
+function showAllTodos(project, projectsList) {
+    for (let i = 0; i < project.list.length; i++) {
+        createTodoCard(project.list[i], projectsList[0].list);
+    }
+}
+export {createTodoCard, createProjectCard, projects};

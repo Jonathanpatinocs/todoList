@@ -35,6 +35,12 @@
     gap: 3px;
     margin-left:auto;
 }
+.deleteTodo {
+    width: 0px;
+    
+    color: #C73659;
+    font-size: 15px;
+}
 .priority-1 {
     background-color: #2b8a51;
 }

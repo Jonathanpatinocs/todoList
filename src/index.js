@@ -1,9 +1,9 @@
 import './main.css';
 import './todo.css';
 import { Project, TodoItem } from './todo';
-import { createProjectCard, createTodoCard } from './dom';
+import { createProjectCard, createTodoCard, projects } from './dom';
 
-const projects = [];
+
 function createMain() {
     const projectsList = document.getElementById('projects-list');
     const main = new Project('Main');
@@ -15,6 +15,7 @@ function createMain() {
 }
 
 const project1 = new Project('school');
+project1.selected = true;
 const project2 = new Project('work');
 projects.push(project1);
 projects.push(project2);
@@ -27,7 +28,7 @@ project1.list.push(todo3);
 
 createMain();
 for (let i = 0; i < project1.list.length; i++) {
-    createTodoCard(project1.list[i]);
+    createTodoCard(project1.list[i], projects[0].list);
 }
 for (let i = 0; i < projects.length; i++) {
     createProjectCard( projects[i], projects)
