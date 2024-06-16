@@ -109,6 +109,9 @@ function createProjectCard(project, list) {
             }
         }
         project.selected = true;
+        const todoContainer = document.getElementById('todo-container');
+        clearAll(todoContainer);
+        showAllTodos(checkProjectSelected(), projects)
     });
     projectsList.append(div);
 }
@@ -131,4 +134,27 @@ function showAllTodos(project, projectsList) {
         createTodoCard(project.list[i], projectsList[0].list);
     }
 }
-export {createTodoCard, createProjectCard, projects};
+function addProject() {
+    const addProjectButton = document.getElementById('newProjectButton');
+    const dialog = document.getElementById('projects-modal')
+    const title = document.getElementById('projectTitle');
+    addProjectButton.addEventListener('click', ()=> {
+        dialog.classList.add('projects-modal')
+        dialog.show();
+    })
+    const dialogProjectAddButton = document.getElementById('projectAddButton');
+    dialogProjectAddButton.addEventListener('click', ()=> {
+        dialog.classList.remove('projects-modal')
+        dialog.close();
+        const project = new Project(title.value);
+        title.value = '';
+        projects.push(project);
+        createProjectCard(project, projects);
+    })
+}
+function closeProjectDialog() {
+    const dialog = document.getElementById('projects-modal')
+    dialog.close();
+}
+
+export {createTodoCard, createProjectCard, projects, addProject};

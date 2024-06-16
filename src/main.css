@@ -62,3 +62,32 @@ margin-left: auto;
 .project {
     height: 30px;
 }
+.projects-modal {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 150px;
+    width: 400px;
+    margin-top: 30%;
+}
+#projects-modal-title form {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 3px;
+}
+#projects-modal-title {
+    margin-top: auto;
+}
+#projects-modal-title input {
+    border-radius: 10px;
+    border: solid 1px grey;
+    width: 250px;
+    height: 25px;
+}
+#projects-modal-title button {
+    border-radius: 15px;
+    color: white;
+    background-color: #9DDE8B;
+}
