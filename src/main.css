@@ -56,9 +56,7 @@ margin-left: auto;
     color: gray;
     background-color: white;
 }
-#projects-list {
 
-}
 .project {
     height: 30px;
 }
@@ -68,8 +66,8 @@ margin-left: auto;
     align-items: center;
     flex-direction: column;
     height: 150px;
-    width: 400px;
-    margin-top: 30%;
+    width: 500px;
+    margin-top: 200px;
 }
 #projects-modal-title form {
     display: flex;

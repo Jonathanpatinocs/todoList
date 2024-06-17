@@ -134,27 +134,65 @@ function showAllTodos(project, projectsList) {
         createTodoCard(project.list[i], projectsList[0].list);
     }
 }
-function addProject() {
+function createProjectDialog() {
+    const modal = document.getElementById('modal');
+    const div = document.createElement('div');
+    div.textContent = 'Add A New Project';
+    const div2 = document.createElement('div');
+    div2.id = 'projects-modal-title';
+    const form = document.createElement('form');
+    form.method = 'dialog';
+    const label = document.createElement('label');
+    label.for = 'projectTitle'
+    label.textContent = "Project Title";
+    const input = document.createElement('input');
+    input.type ='text';
+    input.id = 'projectTitle';
+    const button = document.createElement('button');
+    button.id = 'projectAddButton';
+    button.textContent= '+';
+    button.type = 'button';
+    
+    button.addEventListener('click', ()=> {
+        addProject();
+    })
+    form.append(label, input, button);
+    div2.append(form);
+    modal.append(div, div2)
+}
+
+function addProjectFunction() {
     const addProjectButton = document.getElementById('newProjectButton');
-    const dialog = document.getElementById('projects-modal')
-    const title = document.getElementById('projectTitle');
+    const dialog = document.getElementById('modal')
     addProjectButton.addEventListener('click', ()=> {
+        createProjectDialog();
         dialog.classList.add('projects-modal')
         dialog.show();
     })
-    const dialogProjectAddButton = document.getElementById('projectAddButton');
-    dialogProjectAddButton.addEventListener('click', ()=> {
+}
+function addProject() {
+    const dialog = document.getElementById('modal');
+    const title = document.getElementById('projectTitle');
+        let projectTitle;
         dialog.classList.remove('projects-modal')
         dialog.close();
-        const project = new Project(title.value);
+        if (title.value === '') {
+            projectTitle = 'Untitled';
+        } else {
+            projectTitle = title.value;
+        }
+        const project = new Project(projectTitle);
         title.value = '';
         projects.push(project);
         createProjectCard(project, projects);
+        clearAll(dialog);
+}
+function addTodoFunction() {
+    const addTodoButton = document.getElementById('newTodoButton');
+    const dialog = document.getElementById('')
+    addTodoButton.addEventListener('click', ()=> {
+
     })
 }
-function closeProjectDialog() {
-    const dialog = document.getElementById('projects-modal')
-    dialog.close();
-}
 
-export {createTodoCard, createProjectCard, projects, addProject};
+export {createTodoCard, createProjectCard, projects, addProjectFunction};
