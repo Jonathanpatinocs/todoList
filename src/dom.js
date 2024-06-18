@@ -96,7 +96,7 @@ function createTodoCard(todoItem, project) {
 
 }
 
-
+/* Project Card and functions */
 function createProjectCard(project, list) {
     const projectsList = document.getElementById('projects-list');
     const div = document.createElement('div');
@@ -134,6 +134,8 @@ function showAllTodos(project, projectsList) {
         createTodoCard(project.list[i], projectsList[0].list);
     }
 }
+
+/* Project Dialog and functions */
 function createProjectDialog() {
     const modal = document.getElementById('modal');
     const div = document.createElement('div');
@@ -187,12 +189,140 @@ function addProject() {
         createProjectCard(project, projects);
         clearAll(dialog);
 }
-function addTodoFunction() {
-    const addTodoButton = document.getElementById('newTodoButton');
-    const dialog = document.getElementById('')
+/* Todo Dialog and functions */
+function createTodoDialog() {
+    const dialog = document.getElementById('modal');
+    dialog.classList.add('todoModal');
+    /*  Modal Header */
+    const todoModalHeader = document.createElement('div');
+    todoModalHeader.id = 'todoModalHeader';
+    const div = document.createElement('div');
+    div.textContent = 'Add to List';
+    const addTodoButton = document.createElement('button');
+    addTodoButton.type = 'button';
+    addTodoButton.id = 'addTodoButton';
+    addTodoButton.textContent = '+';
     addTodoButton.addEventListener('click', ()=> {
+        addTodo();
+    })
+    
+    const form = document.createElement('form');
+    form.method = 'dialog';
+    /*  Modal title */
+    const todoModalTitleDiv = document.createElement('div');
+    todoModalTitleDiv.id ='todoModalTitleDiv';
+    const todoModalTitleLabel = document.createElement('label');
+    todoModalTitleLabel.htmlFor = 'todoModalTitle';
+    todoModalTitleLabel.textContent = 'Title:';
+    const todoModalTitleInput = document.createElement('input');
+    todoModalTitleInput.type = 'text';
+    todoModalTitleInput.id = 'todoModalTitle';
+    todoModalTitleInput.autofocus = true;
+    todoModalTitleDiv.append(todoModalTitleLabel, todoModalTitleInput);
+    /*  Modal description */
+    const todoModalDesc = document.createElement('div');
+    todoModalDesc.id = 'todoModalDescriptionDiv';
+    const todoModalDescLabel = document.createElement('label');
+    todoModalDescLabel.htmlFor = 'description';
+    todoModalDescLabel.textContent = 'Description/Notes:';
+    const textArea = document.createElement('textarea');
+    textArea.name = 'description';
+    textArea.id = 'todoModalDescription';
+    textArea.cols = '40';
+    textArea.rows = '13';
+    todoModalDesc.append(todoModalDescLabel, textArea);
+
+    const todoModalFooter = document.createElement('div');
+    todoModalFooter.id = 'todoModalFooter';
+    /*  Modal Priority */
+    const priorityDiv = document.createElement('div');
+    priorityDiv.id = 'priorityDiv';
+    const div2 = document.createElement('div');
+    div2.textContent = 'Priority:';
+    const priority1Label = document.createElement('label');
+    priority1Label.htmlFor = 'priority1';
+    priority1Label.textContent = 'Minimal';
+    const priority1Input = document.createElement('input');
+    priority1Input.type = 'radio';
+    priority1Input.id = 'priority1';
+    priority1Input.name = 'priority';
+    priority1Input.value = 'priority1';
+    priority1Input.checked = true;
+    const priority2Label = document.createElement('label');
+    priority2Label.htmlFor = 'priority2'
+    priority2Label.textContent = 'Medium';
+    const priority2Input = document.createElement('input');
+    priority2Input.type = 'radio';
+    priority2Input.id = 'priority2';
+    priority2Input.name = 'priority';
+    priority2Input.value = 'priority2';
+    const priority3Label = document.createElement('label');
+    priority3Label.htmlFor = 'priority3';
+    priority3Label.textContent = 'Urgent';
+    const priority3Input = document.createElement('input');
+    priority3Input.type = 'radio';
+    priority3Input.id = 'priority3';
+    priority3Input.name = 'priority';
+    priority3Input.value = 'priority3';
+
+    priorityDiv.append(div2, priority1Label, priority1Input, priority2Label, priority2Input, priority3Label, priority3Input);
+
+    /*  Modal due date */
+    const dueDateDiv = document.createElement('div');
+    dueDateDiv.id = 'dueDateDiv';
+    const div3 = document.createElement('div');
+    div3.textContent = 'Due Date';
+    const dueDateInput = document.createElement('input');
+    dueDateInput.type = 'date';
+    dueDateInput.id = 'dueDate';
+    dueDateDiv.append(div3, dueDateInput);
+
+    todoModalFooter.append(priorityDiv, dueDateDiv);
+    todoModalHeader.append(div, addTodoButton);
+    form.append(todoModalTitleDiv, todoModalDesc, todoModalFooter);
+    dialog.append(todoModalHeader,form);
+}
+function addTodo() {
+    const dialog = document.getElementById('modal');
+
+    const titleInput = document.getElementById('todoModalTitle');
+    let title = titleInput.value;
+    titleInput.value = '';
+    const descInput = document.getElementById('todoModalDescription');
+    let description = descInput.value;
+    descInput.value = '';
+    const priority1 = document.getElementById('priority1');
+    const priority2 = document.getElementById('priority2');
+    const priority3 = document.getElementById('priority3');
+    let priority;
+    if (priority1.checked) {
+        priority = 1;
+    } else if (priority2.checked) {
+        priority = 2;
+    } else  {
+        priority = 3;
+    }
+    const dateInput = document.getElementById('dueDate');
+    let dueDate = dateInput.value;
+    
+
+    let todo = new TodoItem(title, description, dueDate, priority);
+    let project = checkProjectSelected();
+    project.list.push(todo);
+    createTodoCard(todo, project);
+
+    clearAll(dialog);
+    dialog.classList.remove('todoModal')
+    dialog.close();
+}
+function addTodoFunction() {
+    const dialog = document.getElementById('modal')
+    const newTodoButton = document.getElementById('newTodoButton');
+    newTodoButton.addEventListener('click', ()=> {
+        createTodoDialog();
+        dialog.show();
 
     })
 }
 
-export {createTodoCard, createProjectCard, projects, addProjectFunction};
+export {createTodoCard, createProjectCard, projects, addProjectFunction, addTodoFunction};

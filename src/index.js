@@ -1,7 +1,7 @@
 import './main.css';
 import './todo.css';
 import { Project, TodoItem } from './todo';
-import { createProjectCard, createTodoCard, projects, addProjectFunction } from './dom';
+import { createProjectCard, createTodoCard, projects, addProjectFunction, addTodoFunction } from './dom';
 
 
 function createMain() {
@@ -30,6 +30,7 @@ project1.list.push(todo2);
 project1.list.push(todo3);
 project2.list.push(todo1);
 addProjectFunction();
+addTodoFunction();
 
 
 for (let i = 0; i < projects.length; i++) {

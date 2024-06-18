@@ -50,3 +50,72 @@
 .priority-3 {
     background-color: #C73659;
 }
+
+.todoModal {
+    border-radius: 25px;
+    margin-top: 170px;
+    height: 300px;
+    width: 500px;
+    font-size: 20px;
+    
+}
+#todoModalHeader {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#addTodoButton {
+    margin-left:auto;
+    width: 50px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #2b8a51;
+    color: white;
+
+}
+#todoModalHeader div {
+    margin-left: auto;
+}
+.todoModal form {
+    display: flex;
+    flex-direction: column;
+}
+#todoModalDescriptionDiv {
+    display: flex;
+}
+#todoModalTitleDiv input {
+    border-radius: 10px;
+    width: 50%;
+    height: 20px;
+    margin-left:5px;
+}
+#priorityDiv {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+#priorityDiv input {
+    margin:0;
+    
+}
+#dueDateDiv {
+    flex: 1;
+    display: flex;
+}
+#todoModalFooter {
+    display: flex;
+    margin-top: 15px;
+    font-size: 13px;
+    
+}
+#priority1 {
+    accent-color: green;
+}
+#priority2 {
+    accent-color: #FFDB5C;
+}
+#priority3 {
+    accent-color: #C73659;
+}
