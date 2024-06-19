@@ -7,7 +7,7 @@ class Project {
     addTodo(item) {
         this.list.push(item);
     }
-    deleteTodo(item) {
+    delete(item) {
         if (this.list.includes(item)) {
             for(let  i = 0; i < this.list.length; i++) {
                 if (this.list[i] === item) {

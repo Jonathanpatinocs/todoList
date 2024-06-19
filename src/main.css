@@ -1,14 +1,24 @@
+:root {
+    --dark-green: #1A4D2E;
+    --green: #4F6F52;
+    --beige: #E8DFCA;
+    --light: #F5EFE6;
+    --blue: #71C9CE;
+}
+
 body {
     padding:3%;
     margin:0;
     min-height: 100vh;
 }
 * {
-    border: 1px solid red;
+  /*  border: 1px solid red; */
 }
 #grid {
+    padding: 15px;
+    border: 2px solid var(--dark-green);
     border-radius: 15px;
-    min-width: 700px;
+    min-width: 680px;
     min-height: 100vh;
     display:grid;
     grid-template-columns: 1fr 2fr;
@@ -16,7 +26,13 @@ body {
 }
 /* Header */
 #header {
-    font-size: 2rem;
+    background-color: var(--light);
+    margin-left: 10px;
+    font-size: 3rem;
+    color: var(--dark-green);
+    border: 2px solid var(--dark-green);
+    margin-bottom: 10px;
+    border-radius: 10px;
     grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
@@ -29,16 +45,27 @@ body {
 #header button {
     align-self: flex-end;
     margin: 3%;
-    background-color: red;
+    background-color: var(--dark-green);
+    border: 2px solid var(--beige);
     width: 60px;
     height: 60px;
     border-radius: 35px;
+    color: white;
+    font-size: 30px;
     
     
 }
 /* Projects */
 #projects-container {
+    background-color: var(--light);
+    padding: 20px;
+    border: 2px solid var(--dark-green);
+    border-radius: 7px;
     grid-area: 1 / 1 / -1 / 2;
+}
+
+#projects-list {
+    margin-top: 15px;
 }
 
 #projects-header {
@@ -46,19 +73,28 @@ body {
     font-size: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 #projects-header div{
 margin-left: auto;
 }
 #newProjectButton {
     margin-left: auto;
+    border-radius: 10px;
+    width: 45px;
+    border: 2px solid var(--beige);
     font-size: 30px;
-    color: gray;
-    background-color: white;
+    color: white;
+    background-color: var(--dark-green);
 }
 
 .project {
-    height: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--green);
+}
+.project.project-selected {
+    border-bottom-color: var(--blue);
 }
 .projects-modal {
     font-size: 22px;

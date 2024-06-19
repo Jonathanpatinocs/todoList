@@ -23,12 +23,7 @@ function createTodoCard(todoItem, project) {
     todoDeleteButton.classList.add('deleteTodo');
     todoDeleteButton.textContent = 'x';
     todoDeleteButton.addEventListener('click', ()=> {
-        console.log(project);
-        let index = project.indexOf(todoItem);
-        project.splice(index, 1);
-        clearAll(todoContainer);
-        showAllTodos(checkProjectSelected(), projects);
-        console.log(project);
+        deleteTodo(todoItem);
     })
     const todoPriority = document.createElement('div');
     todoPriority.classList.add('todoPriority');
@@ -95,6 +90,14 @@ function createTodoCard(todoItem, project) {
     todoContainer.append(todo);
 
 }
+function deleteTodo(todoItem) {
+    const todoContainer = document.getElementById('todo-container');
+    let project = checkProjectSelected();
+    project.delete(todoItem);
+    clearAll(todoContainer);
+    showAllTodos(checkProjectSelected(), projects);
+    console.log(project);
+}
 
 /* Project Card and functions */
 function createProjectCard(project, list) {
@@ -108,7 +111,13 @@ function createProjectCard(project, list) {
                 list[i].selected = false;
             }
         }
+    let projects = document.querySelectorAll('.project');
+    for (let i = 0; i < projects.length; i++) {
+        projects[i].classList.remove('project-selected');
+    }
+        div.classList.add('project-selected');
         project.selected = true;
+        div.classList.add('project-selected');
         const todoContainer = document.getElementById('todo-container');
         clearAll(todoContainer);
         showAllTodos(checkProjectSelected(), projects)

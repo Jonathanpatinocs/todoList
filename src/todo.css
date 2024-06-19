@@ -1,7 +1,12 @@
 /* To do's */
 #todo-container {
+    padding: 5px;
+    border: 2px solid var(--dark-green);
+    border-radius: 8px;
     grid-row: 2 / -1;
     grid-column: 2 / 3;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 .todoHead {
     display: flex;
@@ -11,6 +16,11 @@
     
     height: 100px;
     display: flex;
+}
+.todo {
+    margin-top: 5px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--dark-green);
 }
 .todoBody-hidden {
     height: 0px;
@@ -36,10 +46,17 @@
     margin-left:auto;
 }
 .deleteTodo {
-    width: 0px;
-    
-    color: #C73659;
+    border: 1px solid var(--beige);
+    background-color: var(--light);
+    border-radius: 10px;
+    color: red;
     font-size: 15px;
+}
+.dropdown {
+    border: 1px solid var(--beige);
+    background-color: var(--light);
+    border-radius: 5px;
+    color: var(--dark-green);
 }
 .priority-1 {
     background-color: #2b8a51;
