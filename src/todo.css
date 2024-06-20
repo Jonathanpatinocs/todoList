@@ -103,9 +103,13 @@
 }
 #todoModalTitleDiv input {
     border-radius: 10px;
+    border: 2px solid;
     width: 50%;
     height: 20px;
-    margin-left:5px;
+    margin-left:110px;
+}
+#todoModalTitleDiv {
+    margin-bottom: 3px;
 }
 #priorityDiv {
     flex: 2;

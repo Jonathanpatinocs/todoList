@@ -3,6 +3,8 @@ import { Project, TodoItem } from "./todo";
 
 
 const projects = [];
+let projectModalOpen = false;
+let todoModalOpen = false;
 
 function createTodoCard(todoItem, project) {
     const todoContainer = document.getElementById('todo-container');
@@ -164,8 +166,12 @@ function createProjectDialog() {
     button.textContent= '+';
     button.type = 'button';
     
+    
     button.addEventListener('click', ()=> {
+        
         addProject();
+        projectModalOpen = false;
+            
     })
     form.append(label, input, button);
     div2.append(form);
@@ -175,11 +181,20 @@ function createProjectDialog() {
 function addProjectFunction() {
     const addProjectButton = document.getElementById('newProjectButton');
     const dialog = document.getElementById('modal')
+    
     addProjectButton.addEventListener('click', ()=> {
+        
+        checkProjectModal();
+    })
+}
+function checkProjectModal() {
+    const dialog = document.getElementById('modal')
+    if (projectModalOpen === false) {
         createProjectDialog();
         dialog.classList.add('projects-modal')
         dialog.show();
-    })
+        projectModalOpen = true;
+    }
 }
 function addProject() {
     const dialog = document.getElementById('modal');
@@ -323,13 +338,17 @@ function addTodo() {
     clearAll(dialog);
     dialog.classList.remove('todoModal')
     dialog.close();
+    todoModalOpen = false;
 }
 function addTodoFunction() {
     const dialog = document.getElementById('modal')
     const newTodoButton = document.getElementById('newTodoButton');
     newTodoButton.addEventListener('click', ()=> {
-        createTodoDialog();
-        dialog.show();
+        if (todoModalOpen === false) {
+            createTodoDialog();
+            dialog.show();
+            todoModalOpen = true;
+        }
 
     })
 }
