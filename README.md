@@ -1,4 +1,4 @@
-# todoList
+# Simple Todo List using Javascript, CSS, and HTML bundled with webpack.
 
 # Notes
 
